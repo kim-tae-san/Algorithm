@@ -27,7 +27,6 @@ class InterestingParty{
         }
         return result;
     }
-
 };
 
 int main(){
