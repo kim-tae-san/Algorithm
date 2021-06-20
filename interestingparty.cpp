@@ -38,4 +38,4 @@ int main(){
     int a = party.bestInvitation(first, second);
     printf("%d", a);
 
-}
+} 
