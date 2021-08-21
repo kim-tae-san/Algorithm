@@ -27,12 +27,20 @@ def getPartialMatch(word):
             if leng != 0:
                 leng = pi[leng-1]
             else:
-                pi[begin] = 0
                 begin += 1
-    
     return pi
 
 
 if __name__ == "__main__":
-    test = getPartialMatch("aabaa")
-    print(test)
+    s = input()
+    s += input()
+    ret = []
+    length = getPartialMatch(s)
+    k = len(length)
+    while k > 0:
+        ret.append(k)
+        k = length[k-1]
+    n = len(ret) - 1
+    while n >= 0:
+        print(ret[n], end=" ")
+        n -= 1
