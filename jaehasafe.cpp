@@ -7,11 +7,10 @@ vector<int> getPartialMatch(const string & s){
     int begin = 1, length = 0;
     int n = s.size();
     vector<int> pm(n, 0);
-    while(n > begin){
-        if(s[begin] == s[length]){
+    while(begin + length < n){
+        if(s[begin+length] == s[length]){
             length++;
-            pm[begin] = length;
-            begin++;
+            pm[begin + length - 1] = length;
         }
         else{
             if(length == 0)
@@ -25,16 +24,17 @@ vector<int> getPartialMatch(const string & s){
     return pm;
 }
 
-int kmpsearch(const string &s, const string & obj){
+vector<int> kmpsearch(const string &s, const string & obj){
     vector<int> pm = getPartialMatch(obj);
     int n = s.size();
     int m = obj.size();
     int begin = 0, matched = 0;
-    while(n - m > begin){
+    vector<int> ret;
+    while(n - m >= begin){
         if(matched < m && s[begin + matched] == obj[matched]){
             matched++;
             if(matched == m)
-                return begin;
+                ret.push_back(begin);
         }
         else{
             if(matched == 0)
@@ -45,11 +45,11 @@ int kmpsearch(const string &s, const string & obj){
             }
         }
     }
-    return -1;
+    return ret;
 }
 
 int shifts(const string & original, const string & target){
-    return kmpsearch(original + original, target);
+    return kmpsearch(original + original, target)[0];
 }
 
 int main(){
