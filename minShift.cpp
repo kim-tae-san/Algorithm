@@ -2,11 +2,11 @@
     
     Manber - Myers Suffix Algorithm
 
-    Input : a string
+    Input : a circular string
 
-    Output : Suffix group array
+    Output : Lexicographical order first string
 
-    Calculates Suffix Array using Manber - Myers Suffix Algorithm
+    Calculates Lexicographical order first string using Manber - Myers Suffix Algorithm
 
 
     
@@ -14,7 +14,7 @@
     
 ******************************************/
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <vector>
 using namespace std;
 struct Comparator{
@@ -56,8 +56,17 @@ vector<int> getSuffixArray(const string& s){
     }
 }
 
+string minShift(const string& s){
+    string circlestring = s + s;
+    vector<int> suffix = getSuffixArray(circlestring);
+    for(int i=0; i<s.size(); i++){
+        if(suffix[i] <= s.size()){
+            return circlestring.substr(suffix[i], s.size());
+        }
+    }
+    return "no";
+}
+
 int main(){
-    vector<int> ret = getSuffixArray("alohomora");
-    for(auto i:ret)
-        cout << i << endl;
+    cout << minShift("davraavadake");
 }
