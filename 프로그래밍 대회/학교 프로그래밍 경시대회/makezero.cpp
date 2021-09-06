@@ -23,6 +23,9 @@ vector<int> v;
 vector<bool> visited;
 int Solution(int cnt, int start){
     int ret = 0;
+    if(v.size()>0)
+        if(v[0] > 0)
+            return 0;
     if(cnt == 3){
         int n = 0;
         for(auto i:v)
@@ -47,6 +50,9 @@ int Solution(int cnt, int start){
 }
 
 int main(){
+    ios::sync_with_stdio(false);
+    cin.tie();
+    cout.tie();
     int n;
     cin >> n;
     while(n--){
