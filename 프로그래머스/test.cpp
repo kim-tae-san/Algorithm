@@ -1,3 +1,18 @@
+/****************************************
+    
+    Brute Force
+
+    Input : Answer String
+
+    Output : Most collected student
+
+    Find the best student using brute force
+
+
+    
+    9/7 coded by bmkim
+    
+******************************************/
 #include <string>
 #include <vector>
 #include <iostream>
