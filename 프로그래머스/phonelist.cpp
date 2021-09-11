@@ -1,22 +1,30 @@
+/****************************************
+    
+    Programmer Lv2. Phone_book
+
+    Input : string vector
+
+    Output : Existence of Preffix
+
+    Define the Existence of Preffix in a string vector using bubble sort algorithm
+
+
+    
+    9/11 coded by bmkim
+    
+******************************************/
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-bool visited[1000001] = {0,};
-
 bool solution(vector<string> phone_book) {
+    sort(phone_book.begin(), phone_book.end());
     bool answer = true;
-    for(int i=0; i<phone_book.size(); i++){
-        visited[i] = true;
-        for(int j=0; j<phone_book.size();j++){
-            if(phone_book[i].size() > phone_book[j].size() || visited[j])
-                continue;
-            if(phone_book[i] == phone_book[j].substr(0, phone_book[i].size())){
-                answer = false;
-            }
-        }
-        visited[i] = false;
+    for(int i=0; i<phone_book.size() - 1; i++){
+        if(phone_book[i] == phone_book[i+1].substr(0, phone_book[i].size()))
+            return false;
     }
     return answer;
 }
