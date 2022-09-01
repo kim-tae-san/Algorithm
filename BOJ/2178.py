@@ -1,7 +1,7 @@
 from queue import Queue
 
 move = [
-    [1, 1], [1, 0], [1, -1], [0, 1], [0, 0], [0, -1], [-1, 1], [-1, 0], [-1, -1]
+    [1, 0], [0, 1], [0, -1], [-1, 0]
 ]
 
 def get_input():
@@ -26,7 +26,6 @@ def bfs(start):
         if visited[y][x]:
             continue
         visited[y][x] = True
-        print(current)
         if current[:2] == finish:
             return current[2]
         else:
